@@ -50,7 +50,7 @@ export default function SignIn() {
         onSuccess: () => {
           form.reset()
         },
-        onError: async ctx => {
+        onError: ctx => {
           if (ctx.error.status === 403) {
             router.push('/verify')
           } else {

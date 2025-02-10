@@ -38,9 +38,9 @@ export default function SignUp() {
     },
   })
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  function onSubmit(values: z.infer<typeof formSchema>) {
     const { name, email, password } = values
-    const {} = await authClient.signUp.email(
+    const {} = authClient.signUp.email(
       {
         email,
         password,

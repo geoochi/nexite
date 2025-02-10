@@ -1,5 +1,3 @@
-'use client'
-
 export default function Verify() {
   return (
     <div className='flex flex-col items-center justify-center'>
