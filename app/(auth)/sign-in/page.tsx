@@ -24,8 +24,11 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { signInFormSchema } from '@/lib/auth-schema'
+import { authClient } from '@/lib/auth-client'
+import { useToast } from '@/hooks/use-toast'
 
 export default function SignIn() {
+  const { toast } = useToast()
   const form = useForm<z.infer<typeof signInFormSchema>>({
     resolver: zodResolver(signInFormSchema),
     defaultValues: {
@@ -34,8 +37,31 @@ export default function SignIn() {
     },
   })
 
-  function onSubmit(values: z.infer<typeof signInFormSchema>) {
-    console.log(values)
+  async function onSubmit(values: z.infer<typeof signInFormSchema>) {
+    const { email, password } = values
+    const { data, error } = await authClient.signIn.email(
+      {
+        email,
+        password,
+        callbackURL: '/dashboard',
+      },
+      {
+        onRequest: ctx => {
+          toast({
+            title: 'Please wait...',
+          })
+        },
+        onSuccess: ctx => {
+          toast({
+            title: 'Success',
+          })
+          form.reset()
+        },
+        onError: ctx => {
+          alert(ctx.error.message)
+        },
+      }
+    )
   }
 
   return (
@@ -79,7 +105,9 @@ export default function SignIn() {
                 </FormItem>
               )}
             />
-            <Button className='w-full' type='submit'>Submit</Button>
+            <Button className='w-full' type='submit'>
+              Submit
+            </Button>
           </form>
         </Form>
       </CardContent>

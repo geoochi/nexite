@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Navbar from '@/components/navbar'
 import './globals.css'
+import { Toaster } from '@/components/ui/toaster'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -13,10 +14,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='en' className='dark'>
-      <body className={`antialiased`}>
-        <Navbar />
-        {children}
+    <html lang='en'>
+      <body className={`antialiased dark`}>
+        <div className='flex flex-col h-screen'>
+          <Navbar />
+          {children}
+          <Toaster />
+        </div>
       </body>
     </html>
   )
