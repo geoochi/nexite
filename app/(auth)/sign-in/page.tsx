@@ -25,10 +25,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { signInFormSchema } from '@/lib/auth-schema'
 import { authClient } from '@/lib/auth-client'
-import { useToast } from '@/hooks/use-toast'
 
 export default function SignIn() {
-  const { toast } = useToast()
   const form = useForm<z.infer<typeof signInFormSchema>>({
     resolver: zodResolver(signInFormSchema),
     defaultValues: {
@@ -39,26 +37,19 @@ export default function SignIn() {
 
   async function onSubmit(values: z.infer<typeof signInFormSchema>) {
     const { email, password } = values
-    const { data, error } = await authClient.signIn.email(
+    const {} = await authClient.signIn.email(
       {
         email,
         password,
         callbackURL: '/dashboard',
       },
       {
-        onRequest: ctx => {
-          toast({
-            title: 'Please wait...',
-          })
-        },
-        onSuccess: ctx => {
-          toast({
-            title: 'Success',
-          })
+        onRequest: () => {},
+        onSuccess: () => {
           form.reset()
         },
         onError: ctx => {
-          alert(ctx.error.message)
+          form.setError('email', { message: ctx.error.message })
         },
       }
     )
@@ -113,7 +104,7 @@ export default function SignIn() {
       </CardContent>
       <CardFooter className='flex justify-center'>
         <p className='text-sm text-muted-foreground'>
-          Don't have an account yet?{' '}
+          Don&apos;t have an account yet?{' '}
           <Link href='/sign-up' className='text-primary hover:underline'>
             Sign up
           </Link>

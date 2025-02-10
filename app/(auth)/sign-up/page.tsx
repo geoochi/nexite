@@ -42,7 +42,7 @@ export default function SignUp() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const { name, email, password } = values
-    const { data, error } = await authClient.signUp.email(
+    const {} = await authClient.signUp.email(
       {
         email,
         password,
@@ -50,20 +50,16 @@ export default function SignUp() {
         callbackURL: '/sign-in',
       },
       {
-        onRequest: ctx => {
+        onRequest: () => {},
+        onSuccess: () => {
           toast({
-            title: 'Please wait...',
-          })
-        },
-        onSuccess: ctx => {
-          toast({
-            title: 'Account created successfully',
+            title: 'Sign up successfully',
           })
           form.reset()
           router.push('/sign-in')
         },
         onError: ctx => {
-          alert(ctx.error.message)
+          form.setError('email', { message: ctx.error.message })
         },
       }
     )
