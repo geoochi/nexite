@@ -25,11 +25,9 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { formSchema } from '@/lib/auth-schema'
 import { authClient } from '@/lib/auth-client'
-import { useToast } from '@/hooks/use-toast'
 import { useRouter } from 'next/navigation'
 
 export default function SignUp() {
-  const { toast } = useToast()
   const router = useRouter()
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -52,11 +50,8 @@ export default function SignUp() {
       {
         onRequest: () => {},
         onSuccess: () => {
-          toast({
-            title: 'Sign up successfully',
-          })
           form.reset()
-          router.push('/sign-in')
+          router.push('/verify')
         },
         onError: ctx => {
           form.setError('email', { message: ctx.error.message })
@@ -123,7 +118,7 @@ export default function SignUp() {
           </form>
         </Form>
       </CardContent>
-      <CardFooter className='flex justify-center'>
+      <CardFooter>
         <p className='text-sm text-muted-foreground'>
           Already have an account?{' '}
           <Link href='/sign-in' className='text-primary hover:underline'>

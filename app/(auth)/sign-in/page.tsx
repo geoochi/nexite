@@ -25,8 +25,10 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { signInFormSchema } from '@/lib/auth-schema'
 import { authClient } from '@/lib/auth-client'
+import { useRouter } from 'next/navigation'
 
 export default function SignIn() {
+  const router = useRouter()
   const form = useForm<z.infer<typeof signInFormSchema>>({
     resolver: zodResolver(signInFormSchema),
     defaultValues: {
@@ -35,9 +37,9 @@ export default function SignIn() {
     },
   })
 
-  async function onSubmit(values: z.infer<typeof signInFormSchema>) {
+  function onSubmit(values: z.infer<typeof signInFormSchema>) {
     const { email, password } = values
-    const {} = await authClient.signIn.email(
+    const {} = authClient.signIn.email(
       {
         email,
         password,
@@ -48,8 +50,12 @@ export default function SignIn() {
         onSuccess: () => {
           form.reset()
         },
-        onError: ctx => {
-          form.setError('email', { message: ctx.error.message })
+        onError: async ctx => {
+          if (ctx.error.status === 403) {
+            router.push('/verify')
+          } else {
+            form.setError('email', { message: ctx.error.message })
+          }
         },
       }
     )
@@ -102,7 +108,7 @@ export default function SignIn() {
           </form>
         </Form>
       </CardContent>
-      <CardFooter className='flex justify-center'>
+      <CardFooter className='flex flex-col justify-center gap-2'>
         <p className='text-sm text-muted-foreground'>
           Don&apos;t have an account yet?{' '}
           <Link href='/sign-up' className='text-primary hover:underline'>

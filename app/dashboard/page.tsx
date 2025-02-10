@@ -8,7 +8,7 @@ export default async function Dashboard() {
   })
 
   if (!session) {
-    return redirect('/')
+    return redirect('/sign-in')
   }
 
   const user = session.user
