@@ -8,21 +8,6 @@ interface EmailOptions {
   text: string
 }
 
-interface EmailTemplateProps {
-  text: string
-}
-
-const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({ text: url }) => (
-  <>
-    <p>Click the link below to verify your email:</p>
-    <button className='bg-[#70b1f5] text-white px-6 py-2 rounded w-[120px] h-[50px]'>
-      <a className='no-underline text-white text-2xl' href={url}>
-        Verify
-      </a>
-    </button>
-  </>
-)
-
 export async function sendEmail({ to, subject, text: url }: EmailOptions) {
   console.log(`to: ${to}\nsubject: ${subject}\ntext: ${url}`)
   try {
@@ -30,7 +15,31 @@ export async function sendEmail({ to, subject, text: url }: EmailOptions) {
       from: `${process.env.EMAIL_MY_EMAIL_NAME} <${process.env.EMAIL_MY_EMAIL_ADDRESS}>`,
       to: [to],
       subject: subject,
-      react: <EmailTemplate text={url} />,
+      react: (
+        <>
+          <p>Click the link below to verify your email:</p>
+          <button
+            style={{
+              backgroundColor: '#8cdd76',
+              borderRadius: '4px',
+              border: 'none',
+              width: '100px',
+              height: '40px',
+            }}
+          >
+            <a
+              style={{
+                textDecoration: 'none',
+                color: 'white',
+                fontSize: '1.5rem',
+              }}
+              href={url}
+            >
+              Verify
+            </a>
+          </button>
+        </>
+      ),
     })
 
     if (error) {

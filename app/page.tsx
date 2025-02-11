@@ -1,5 +1,7 @@
 'use client'
 
 export default function Home() {
-  return <h1>hello world</h1>
+  return (
+    <p className='text-9xl'>hello world</p>
+  )
 }
