@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nexite
 
-## Getting Started
+A fullstack website dev and build with next.js
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- next
+- tailwindcss
+- shadcn
+- lucide icon
+- better-auth
+- prisma
+- sqlite
+
+## How to use
+
+1. initiate and install dependences
+
+```sh
+git clone https://github.com/geoochi/next-site.git
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. set environment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+cp .env.example .env
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+and then change the keys of
 
-## Learn More
+- [better-auth key](https://www.better-auth.com/docs/installation#set-environment-variables)
+- this app url (local or remote)
+- database url (local or remote)
+- email name and address
+- [resend api key](https://resend.com/api-keys) (use to send email automatically if you have a domain)
 
-To learn more about Next.js, take a look at the following resources:
+3. generate database
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```sh
+pnpx prisma db push
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+and then you can find a database file in ./prisma/dev.db
 
-## Deploy on Vercel
+4. start server and moniter your database
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+terminal 1:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```sh
+pnpm next dev --turbopack
+```
+
+terminal 2:
+
+```sh
+pnpx prisma studio
+```
