@@ -3,7 +3,7 @@ import Navbar from '@/components/navbar'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Next Site',
+  title: 'Nexite',
 }
 
 export default function RootLayout({

@@ -15,7 +15,7 @@ export default async function Navbar() {
       <div className='flex items-center justify-between mx-auto max-w-4xl h-16'>
         <Link href='/' className='flex items-center gap-2'>
         <PanelsTopLeft />
-          <span className='font-bold'>Next Site</span>
+          <span className='font-bold'>Nexite</span>
         </Link>
         {session ? (
           <form
