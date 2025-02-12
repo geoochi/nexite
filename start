@@ -1,4 +1,7 @@
 #! /bin/sh
 
-nohup pnpm p > log/$(date +"%Y-%m-%d_%H-%M-%S").log 2>&1 &
-nohup pnpm q > /dev/null 2>&1 &
+if [ ! -f app.pid ];
+then
+    nohup pnpm next start > log/$(date +"%Y-%m-%d_%H-%M-%S").log 2>&1 & echo $! > app.pid
+    nohup pnpm prisma studio > /dev/null 2>&1 & echo $! > studio.pid
+fi
