@@ -2,8 +2,9 @@
   "packageManager": "pnpm@10.2.1",
   "scripts": {
     "d": "next dev --turbopack",
-    "b": "next build",
+    "b": "next build --no-lint",
     "p": "next start",
+    "q": "prisma studio",
     "l": "next lint"
   },
   "dependencies": {
@@ -35,6 +36,7 @@
     "eslint-config-next": "^15.1.7",
     "eslint-plugin-react-hooks": "^5.1.0",
     "postcss": "^8.5.2",
+    "prisma": "^6.3.1",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.3"
   },

@@ -4,6 +4,7 @@ import prisma from './prisma'
 import { sendEmail } from '@/lib/email'
 
 export const auth = betterAuth({
+  trustedOrigins: [process.env.BETTER_AUTH_URL!],
   database: prismaAdapter(prisma, { provider: 'sqlite' }),
   emailAndPassword: { enabled: true, requireEmailVerification: true },
   emailVerification: {

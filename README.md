@@ -30,15 +30,15 @@ cp .env.example .env
 and then change the keys of
 
 - [better-auth key](https://www.better-auth.com/docs/installation#set-environment-variables)
-- this app url (local or remote)
-- database url (local or remote)
+- this app url (in this demo is localhost)
+- database url (in this demo is local sqlite)
 - email name and address
 - [resend api key](https://resend.com/api-keys) (use to send email automatically if you have a domain)
 
 3. generate database
 
 ```sh
-pnpx prisma db push
+pnpm prisma db push
 ```
 
 and then you can find a database file in ./prisma/dev.db
@@ -48,11 +48,19 @@ and then you can find a database file in ./prisma/dev.db
 terminal 1:
 
 ```sh
-pnpm next dev --turbopack
+pnpm b
+pnpm p
 ```
 
 terminal 2:
 
 ```sh
-pnpx prisma studio
+pnpm q
+```
+
+5. deploy in your product server (optional)
+
+```sh
+chmod +x ./start
+./start
 ```

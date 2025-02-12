@@ -6,3 +6,4 @@ out/
 .env
 *.db
 next-env.d.ts
+*.log

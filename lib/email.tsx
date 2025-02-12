@@ -9,7 +9,7 @@ interface EmailOptions {
 }
 
 export async function sendEmail({ to, subject, text: url }: EmailOptions) {
-  console.log(`to: ${to}\nsubject: ${subject}\ntext: ${url}`)
+  console.log(`to: ${to}\nsubject: ${subject}`)
   try {
     const { data, error } = await resend.emails.send({
       from: `${process.env.EMAIL_MY_EMAIL_NAME} <${process.env.EMAIL_MY_EMAIL_ADDRESS}>`,
