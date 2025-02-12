@@ -1,6 +1,6 @@
 # Nexite
 
-A fullstack website dev and build with next.js
+A fullstack website build with next.js
 
 ## Features
 
