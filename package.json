@@ -1,5 +1,5 @@
 {
-  "packageManager": "pnpm@10.2.1",
+  "packageManager": "pnpm@10.3.0",
   "scripts": {
     "d": "next dev --turbopack",
     "b": "next build --no-lint",
