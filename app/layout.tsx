@@ -18,9 +18,7 @@ export default function RootLayout({
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
           <div className='flex flex-col h-screen'>
             <Navbar />
-            <div className='flex h-screen items-center justify-center'>
-              {children}
-            </div>
+            {children}
           </div>
         </ThemeProvider>
       </body>

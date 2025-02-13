@@ -12,8 +12,11 @@ export default async function Navbar() {
   })
 
   return (
-    <div className='border-b px-4'>
-      <div className='flex items-center justify-between mx-auto max-w-4xl h-16'>
+    <div
+      className='fixed w-full bg-background'
+      style={{ transition: 'background-color 0.8s ease' }}
+    >
+      <div className='flex items-center justify-between mx-auto max-w-3xl h-16'>
         <Link href='/' className='flex items-center gap-2'>
           <PanelsTopLeft />
           <span className='font-bold'>Nexite</span>
