@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang='en' suppressHydrationWarning>
       <body className='antialiased'>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
           <div className='flex flex-col h-screen'>
             <Navbar />
             <div className='flex h-screen items-center justify-center'>

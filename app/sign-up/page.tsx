@@ -53,7 +53,7 @@ export default function SignUp() {
           form.reset()
           router.push('/verify')
         },
-        onError: ctx => {
+        onError: (ctx) => {
           form.setError('email', { message: ctx.error.message })
         },
       }

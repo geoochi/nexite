@@ -5,7 +5,8 @@
     "b": "next build --no-lint",
     "p": "next start",
     "q": "prisma studio",
-    "l": "next lint"
+    "l": "next lint",
+    "f": "prettier . -l --write"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -32,11 +33,12 @@
     "@eslint/eslintrc": "^3.2.0",
     "@next/eslint-plugin-next": "^15.1.7",
     "@tailwindcss/postcss": "^4.0.6",
-    "@types/node": "^20.17.17",
+    "@types/node": "^22.13.2",
     "@types/react": "^19.0.8",
     "eslint": "^9.20.1",
     "eslint-config-next": "^15.1.7",
     "eslint-plugin-react-hooks": "^5.1.0",
+    "prettier": "^3.5.1",
     "prisma": "^6.3.1",
     "tailwindcss": "^4.0.6",
     "typescript": "^5.7.3"
