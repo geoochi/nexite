@@ -62,5 +62,18 @@ pnpm q
 
 ```sh
 chmod +x ./start
+```
+
+start server on localhost:3000 and database monitor on localhost:5556
+
+```sh
+chmod +x ./start
 ./start
+```
+
+stop server and monitor
+
+```sh
+chmod +x ./stop
+./stop
 ```
