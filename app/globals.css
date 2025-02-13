@@ -98,13 +98,4 @@
     @apply bg-background text-foreground;
     transition: background-color 0.8s ease;
   }
-  :root {
-    color-scheme: light dark;
-  }
-  html {
-    transition: background-color 0.8s ease;
-  }
-  html.dark {
-    transition: background-color 0.8s ease;
-  }
 }
