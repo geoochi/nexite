@@ -19,7 +19,7 @@ A fullstack website build with next.js
 ### 1. initiate and install dependences
 
 ```sh
-git clone https://github.com/geoochi/next-site.git
+git clone https://github.com/geoochi/nexite.git
 pnpm install
 ```
 
