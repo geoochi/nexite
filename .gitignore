@@ -4,6 +4,7 @@ node_modules/
 .next/
 out/
 .env
-*.db
+.env.production
 next-env.d.ts
+*.db
 *.log

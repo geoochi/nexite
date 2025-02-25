@@ -6,7 +6,9 @@
     "p": "next start",
     "q": "prisma studio",
     "l": "next lint",
-    "f": "prettier . -l --write"
+    "f": "prettier . -l --write",
+    "start": "./start",
+    "stop": "./stop"
   },
   "dependencies": {
     "@ai-sdk/react": "^1.1.18",
