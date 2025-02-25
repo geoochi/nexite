@@ -62,60 +62,62 @@ export default function SignIn() {
   }
 
   return (
-    <Card className='w-full max-w-xs mx-auto'>
-      <CardHeader>
-        <CardTitle>Sign In</CardTitle>
-        <CardDescription>
-          Welcome back! Please sign in to continue.
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
-            <FormField
-              control={form.control}
-              name='email'
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input placeholder='john@mail.com' {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name='password'
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Password</FormLabel>
-                  <FormControl>
-                    <Input
-                      type='password'
-                      placeholder='Enter your password'
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Button className='w-full' type='submit'>
-              Submit
-            </Button>
-          </form>
-        </Form>
-      </CardContent>
-      <CardFooter className='flex flex-col justify-center gap-2'>
-        <p className='text-sm text-muted-foreground'>
-          Don&apos;t have an account yet?{' '}
-          <Link href='/sign-up' className='text-primary hover:underline'>
-            Sign up
-          </Link>
-        </p>
-      </CardFooter>
-    </Card>
+    <div className='flex h-screen items-center justify-center'>
+      <Card className='w-full max-w-xs mx-auto'>
+        <CardHeader>
+          <CardTitle>Sign In</CardTitle>
+          <CardDescription>
+            Welcome back! Please sign in to continue.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
+              <FormField
+                control={form.control}
+                name='email'
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input placeholder='john@mail.com' {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name='password'
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Password</FormLabel>
+                    <FormControl>
+                      <Input
+                        type='password'
+                        placeholder='Enter your password'
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button className='w-full' type='submit'>
+                Submit
+              </Button>
+            </form>
+          </Form>
+        </CardContent>
+        <CardFooter className='flex flex-col justify-center gap-2'>
+          <p className='text-sm text-muted-foreground'>
+            Don&apos;t have an account yet?{' '}
+            <Link href='/sign-up' className='text-primary hover:underline'>
+              Sign up
+            </Link>
+          </p>
+        </CardFooter>
+      </Card>
+    </div>
   )
 }

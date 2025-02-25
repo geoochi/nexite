@@ -6,7 +6,7 @@ import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { useState } from 'react'
 
-export default function LandingPageAi() {
+export default function Chat() {
   const {
     messages,
     input,
