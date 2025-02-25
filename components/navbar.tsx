@@ -14,7 +14,7 @@ export default async function Navbar() {
   return (
     <div
       className='fixed w-full bg-background'
-      style={{ transition: 'background-color 0.8s ease' }}
+      style={{ transition: 'background-color 0.3s ease' }}
     >
       <div className='flex items-center justify-between mx-auto max-w-3xl h-16'>
         <Link href='/' className='flex items-center gap-2'>
@@ -22,6 +22,7 @@ export default async function Navbar() {
           <span className='font-bold'>Nexite</span>
         </Link>
         <div className='flex items-center gap-4'>
+          <ThemeToggle />
           {session ? (
             <form
               action={async () => {
@@ -39,7 +40,6 @@ export default async function Navbar() {
               <Button>Sign In</Button>
             </Link>
           )}
-          <ThemeToggle />
         </div>
       </div>
     </div>
