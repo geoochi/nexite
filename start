@@ -1,7 +1,15 @@
 #! /bin/sh
 
-if [ ! -f app.pid ];
+if [ -z $(ps x | grep 'next-server' | grep -v grep | awk '{print $1}') ];
 then
-    nohup pnpm next start > log/$(date +"%Y-%m-%d_%H-%M-%S").log 2>&1 & echo $! > app.pid
-    nohup pnpm prisma studio > /dev/null 2>&1 & echo $! > studio.pid
+    nohup pnpm next start -p 3000 > log/$(date +"%Y-%m-%d_%H-%M-%S").log 2>&1 &
+else
+    echo "next server is already running"
+fi
+
+if [ -z $(ps x | grep 'index.js studio --port 5555' | grep -v grep | awk '{print $1}') ];
+then
+    nohup pnpm prisma studio --port 5555 > /dev/null 2>&1 &
+else
+    echo "prisma studio is already running"
 fi

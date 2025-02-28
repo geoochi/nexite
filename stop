@@ -1,9 +1,15 @@
 #! /bin/sh
 
-if [ -f app.pid ];
+if [ ! -z $(ps x | grep 'next-server' | grep -v grep | awk '{print $1}') ];
 then
-    kill $(cat app.pid)
-    rm app.pid
-    kill $(cat studio.pid)
-    rm studio.pid
+    pkill -9 -f 'next-server'
+else
+    echo "next server is not running"
+fi
+
+if [ ! -z $(ps x | grep 'index.js studio --port 5555' | grep -v grep | awk '{print $1}') ];
+then
+    pkill -9 -f 'index.js studio --port 5555'
+else
+    echo "prisma studio is not running"
 fi

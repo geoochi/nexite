@@ -3,7 +3,7 @@
 node_modules/
 .next/
 out/
-.env
+.env.local
 .env.production
 next-env.d.ts
 *.db
